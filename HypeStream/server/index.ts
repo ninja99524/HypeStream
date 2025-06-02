@@ -64,6 +64,12 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = Number(process.env.PORT)
+  const staticPath = path.join(__dirname, '../../client/dist');
+app.use(express.static(staticPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});
   server.listen({
     port,
     host: "0.0.0.0",
