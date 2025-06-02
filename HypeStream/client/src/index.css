@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 262 80% 50%; /* Purple */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 262 80% 50%;
+  --radius: 0.5rem;
+  
+  /* Music app specific colors */
+  --background-primary: 210 11% 7%; /* #121212 */
+  --background-secondary: 210 6% 11%; /* #1F2937 */
+  --accent-purple: 262 80% 50%; /* #6366F1 */
+  --accent-green: 160 84% 39%; /* #10B981 */
+  --accent-orange: 43 96% 56%; /* #F59E0B */
+  --accent-blue: 213 94% 68%; /* #3B82F6 */
+  --accent-pink: 330 81% 60%; /* #EC4899 */
+}
+
+.dark {
+  --background: 210 11% 7%; /* #121212 */
+  --foreground: 0 0% 98%;
+  --muted: 210 6% 11%; /* #1F2937 */
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 210 11% 7%;
+  --popover-foreground: 0 0% 98%;
+  --card: 210 6% 11%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 262 80% 50%; /* Purple */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 262 80% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: hsl(var(--background-primary));
+    color: hsl(var(--foreground));
+  }
+
+  /* Set default dark theme */
+  html {
+    @apply dark;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-secondary));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent-purple));
+  }
+}
+
+@layer components {
+  .gradient-purple {
+    background: linear-gradient(135deg, hsl(var(--accent-purple)), hsl(var(--accent-pink)));
+  }
+  
+  .gradient-green {
+    background: linear-gradient(135deg, hsl(var(--accent-green)), hsl(var(--accent-blue)));
+  }
+  
+  .gradient-orange {
+    background: linear-gradient(135deg, hsl(var(--accent-orange)), hsl(var(--accent-green)));
+  }
+
+  .music-player-shadow {
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Animations */
+@keyframes pulse-coin {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-coin {
+  animation: pulse-coin 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
